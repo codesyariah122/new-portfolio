@@ -15,7 +15,7 @@
 							</blockquote>
 							<div class="flex mt-4 md:mt-6">
 								<a href="/about" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See More About &nbsp;&nbsp; <font-awesome-icon icon="px-2 fa-solid fa-arrow-right-from-bracket" /></a>
-								<a href="#" class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><font-awesome-icon icon="px-2 fa-brands fa-whatsapp" /> Chat Me</a>
+								<a @click="whatsappRedirect" class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><font-awesome-icon icon="px-2 fa-brands fa-whatsapp" /> Chat Me</a>
 							</div>
 						</div>
 						<div class="flex justify-center space-x-2 items-center pb-10">
@@ -108,4 +108,14 @@
 		persons: Array,
 		skills: Array
 	});
+
+	function whatsappRedirect() {
+		const whatsappNumber = '6288222668778';
+		const name = 'Puji'
+
+		const whatsappUrl = `https://wa.me/${whatsappNumber}?text=`;
+		const text = `Halo, ${name} saya ingin berkonsultasi seputar IT dan Website...`;
+		const encodeText = encodeURIComponent(text);
+		window.open(`${whatsappUrl}${encodeText}`)
+	}
 </script>
