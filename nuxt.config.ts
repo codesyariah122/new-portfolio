@@ -21,10 +21,6 @@ components: true,
 head: {
   title: "PujiErmanto::Portfolio",
 },
-site: {
-    // production URL
-  url: 'https://pujiermanto-portfolio.vercel.app',
-},
 css: [
   "@/assets/css/main.css",
   '@fortawesome/fontawesome-svg-core/styles.css'
