@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  ssr: false,
+  ssr: true,
   target: 'static',
   runtimeConfig: {
     public: {
@@ -21,12 +21,17 @@ components: true,
 head: {
   title: "PujiErmanto::Portfolio",
 },
+site: {
+    // production URL
+  url: 'https://pujiermanto-portfolio.vercel.app',
+},
 css: [
   "@/assets/css/main.css",
   '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 modules: [
-  "@nuxtjs/sanity",
+  'nuxt-og-image',
+  '@nuxtjs/sanity',
   '@nuxtjs/tailwindcss',
   '@nuxtjs/device',
   'vue3-carousel-nuxt',
