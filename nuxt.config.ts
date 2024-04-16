@@ -1,8 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  ssr: true,
-  target: 'static',
   runtimeConfig: {
     public: {
      NUXT_APP_GITHUB_API_URL: process.env.NUXT_APP_GITHUB_API_URL,
