@@ -13,9 +13,6 @@
 					<div class="grid grid-cols-1 md:grid md:grid-cols-3 gap-4 ">
 						<div v-for="repo in repositories" :key="repo.id">
 							<div class="w-full max-w-sm bg-stone-200 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-								<a href="#">
-									<img class="p-8 rounded-t-lg" src="https://flowbite.com/docs/images/products/apple-watch.png" alt="product image" />
-								</a>
 								<div class="px-5 pb-5">
 									<a href="#">
 										<h5 class="text-xl font-semibold capitalize tracking-tight text-gray-900 dark:text-white">
@@ -33,8 +30,21 @@
 										</span>
 									</div>
 									<div class="flex items-center justify-between">
-										<span class="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
-										<a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
+										<img v-if="repo.language === 'PHP'" src="/img/logos/php.png" class="h-6"/>
+										
+										<img v-if="repo.language === 'Vue'" src="/img/logos/vue.png" class="h-6"/>
+
+										<img v-if="repo.language === 'Html'" src="/img/logos/html5.png" class="h-6"/>
+
+										<img v-if="repo.language === 'Css'" src="/img/logos/css3.png" class="h-6"/>
+
+										<img v-if="repo.language === 'JavaScript'" src="/img/logos/js.png" class="h-6"/>
+
+										<img v-if="repo.language === 'TypeScript'" src="/img/logos/typescript.png" class="h-6"/>
+
+										<img v-if="repo.language === '' || repo.language === null || repo.language === undefined" src="/img/logos/bash.png" class="h-6"/>
+
+										<a @click="redirectRepo(repo.html_url)" class="text-gray-700 bg-transparent border-2 border-gray-600 hover:bg-blue-800 hover:text-white hover:border-0 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer">Go To Repo <font-awesome-icon icon="px-2 fa-solid fa-arrows-turn-right" /></a>
 									</div>
 								</div>
 							</div>
@@ -50,4 +60,8 @@
 	const props = defineProps({
 		repositories: Array
 	});
+
+	function redirectRepo(url) {
+		window.open(url)
+	}
 </script>

@@ -48,8 +48,9 @@ modules: [
         ital: '200..700',
       }
     }
-  }]
-  ],
+  }],
+  "@nuxt/image"
+],
 carousel: {
   prefix: 'C'
 },

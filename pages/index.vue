@@ -1,16 +1,22 @@
 <template>
 	<div>
-		<home-person :persons="persons" :skills="skills"/>
-
-		<home-repositories :repositories="repositories" />
+		<div v-if="loading">
+			<molecules-loading :loading="loading" />
+		</div>
+		<div v-else>
+			<home-person :persons="persons" :skills="skills"/>
+			<home-repositories :repositories="repositories" />
+		</div>
 	</div>
 </template>
 
 <script setup>
+	import {ref} from 'vue';
+	import {fetchData} from '~/hooks';
+
 	definePageMeta({
 		layout: 'default'
 	})
-
 
 	const config = useRuntimeConfig()
 	const apiConfig = {
@@ -21,33 +27,29 @@
 	const configRepo = {
 		page: 1,
 		sort: 'created',
-		per_page: 15
+		per_page: 25
 	};
+	let repositories = ref([]);
+	let loading = ref(false);
 
-	const { data: repos, error: repoError } = useAsyncData('github-repo', async () => {
+	(async () => {
 		try {
-			const endPoint = `${apiConfig.github_url}${apiConfig.github_user}/repos?page=${configRepo.page}&sort=${configRepo.sort}&per_page=${configRepo.per_page}`;
-
-			const response = await fetch(endPoint, {
-				headers: {
-					Authorization: `Bearer ${apiConfig.github_token}`
-				}
-			});
-
-			if (!response.ok) {
-				throw new Error('Gagal mendapatkan data dari API');
+			// Set loading menjadi true saat melakukan fetch
+			loading.value = true;
+			const data = await fetchData(apiConfig, configRepo);
+			if (data.length > 0) {
+				// Set nilai repositories jika data berhasil diambil
+				repositories.value = data;
 			}
-
-			const data = await response.json();
-
-			return data;
 		} catch (error) {
 			console.error('Terjadi kesalahan saat memanggil API:', error.message);
-			throw error;
+		} finally {
+			// Set loading menjadi false setelah fetch selesai
+			loading.value = false;
 		}
-	});
+	})();
 
-	console.log(repos.value)
+	console.log(repositories?.value)
 
 	const sanity = useSanity()
 	const queryPerson = groq`*[_type == "person"]`;
@@ -57,5 +59,4 @@
 
 	const persons = dataPerson?.data
 	const skills = dataSkill?.data
-	const repositories = repos && repos?.value
 </script>
