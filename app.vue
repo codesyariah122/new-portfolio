@@ -47,7 +47,8 @@
 
 <script setup>
 // If you want to use it in setup, import from the nuxtApp.
-  const { $pwa } = useNuxtApp()
+  const { $pwa } = useNuxtApp();
+  
   useHead({
     title: 'PujiErmanto::Portfolio',
     meta: [
