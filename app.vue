@@ -48,13 +48,6 @@
 <script setup>
 // If you want to use it in setup, import from the nuxtApp.
   const { $pwa } = useNuxtApp()
-  defineOgImageComponent('Puji Ermanto - Portfolio', {
-    title: 'Hello in my new portfolio 👋',
-    description: 'Coffee Again Script Again',
-    theme: '#ff0000',
-    colorMode: 'dark',
-  });
-
   useHead({
     title: 'PujiErmanto::Portfolio',
     meta: [
