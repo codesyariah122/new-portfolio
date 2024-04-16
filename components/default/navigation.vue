@@ -13,10 +13,10 @@
 			<div :class="`${isMenuOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`" id="navbar-solid-bg">
 				<ul class="flex flex-col font-medium mt-4 rounded-lg bg-stone-200 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-stone-800 md:dark:bg-transparent dark:border-stone-700">
 					<li>
-						<a href="#" class="block py-2 px-3 md:p-0 text-stone-800 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+						<nuxt-link to="/" exact-active-class="text-blue-700 md:text-blue-500 dark:text-white md:dark:text-blue-500 dark:hover:bg-stone-700" class="block py-2 px-3 md:p-0 text-stone-800 rounded md:bg-transparent md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</nuxt-link>
 					</li>
 					<li>
-						<a href="#" class="block py-2 px-3 md:p-0 text-stone-800 rounded hover:bg-stone-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-stone-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+						<nuxt-link to="/about" exact-active-class="text-blue-700 md:text-blue-500 dark:text-white md:dark:text-blue-500 dark:hover:bg-stone-700" class="block py-2 px-3 md:p-0 text-stone-800 rounded hover:bg-stone-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-stone-700 dark:hover:text-white md:dark:hover:bg-transparent">About</nuxt-link>
 					</li>
 				</ul>
 			</div>

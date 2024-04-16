@@ -18,8 +18,6 @@ export const fetchData = async (apiConfig, configRepo) => {
 
 		const starredRepos = data.filter(repo => repo.stargazers_count > 0);
 
-		console.log(starredRepos);
-
 		return starredRepos;
 	} catch (error) {
 		console.error('Terjadi kesalahan saat memanggil API:', error.message);

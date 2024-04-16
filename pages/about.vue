@@ -4,11 +4,11 @@
 			<molecules-loading :loading="loading" />
 		</div>
 		<div v-else>
-			<home-person :persons="persons" :skills="skills"/>
-			<home-repositories :repositories="repositories" />
+			<about-person :persons="persons"/>
 		</div>
 	</div>
 </template>
+
 
 <script setup>
 	import {ref} from 'vue';
@@ -25,7 +25,7 @@
 	})
 
 	useHead({
-		title: 'PujiErmanto::Portfolio',
+		title: 'About::Me',
 		meta: [
 			{ name: 'description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya' },
 			{
@@ -44,48 +44,55 @@
 	});
 
 	useSeoMeta({
-		title: 'PUJIERMANTO::PORTFOLIO',
-		ogTitle: 'PUJIERMANTO::PORTFOLIO',
+		title: 'About::Me',
+		ogTitle: 'About::Me',
 		description: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya...',
 		ogDescription: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya',
 		ogImage: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg',
 		twitterCard: 'summary_large_image',
 	});
 
-	const config = useRuntimeConfig()
-	const apiConfig = {
-		github_url: config.public.NUXT_APP_GITHUB_API_URL,
-		github_user: config.public.NUXT_APP_GITHUB_USER,
-		github_token: config.public.NUXT_APP_ACCESS_TOKEN
-	}
-	const configRepo = {
-		page: 1,
-		sort: 'created',
-		per_page: 25
-	};
-	let repositories = ref([]);
-	let loading = ref(false);
-
-	(async () => {
-		try {
-			loading.value = true;
-			const data = await fetchData(apiConfig, configRepo);
-			if (data.length > 0) {
-				repositories.value = data;
-			}
-		} catch (error) {
-			console.error('Terjadi kesalahan saat memanggil API:', error.message);
-		} finally {
-			loading.value = false;
-		}
-	})();
-
 	const sanity = useSanity()
-	const queryPerson = groq`*[_type == "person"]`;
-	const querySkill = groq`*[_type == "skillProgramming"]`;
-	const dataPerson = await useAsyncData('person', () => sanity.fetch(queryPerson))
-	const dataSkill = await useAsyncData('skillProgramming', () => sanity.fetch(querySkill))
+	let loading = ref(true)
+	const queryPerson = groq`*[_type == "person"] {
+		_id,
+		name,
+		slug,
+		jobdesk,
+		contactInfo,
+		image,
+		aboutImage,
+		excerpt,
+		bio
+	}[0...50]`;
+	const queryProject = groq`*[_type == "sampleProject"] | order(_createdAt desc) {
+		_id,
+		title,
+		slug,
+		categories,
+		members,
+		startedAt,
+		endedAt,
+		mainImage,
+		excerpt,
+		body
+	}[0...50]`
 
+	const dataPerson = await useAsyncData('person', () => sanity.fetch(queryPerson))
+	const dataProject = await useAsyncData('project', () => sanity.fetch(queryProject))
+
+	// console.log(pending.value)
+
+	// if(!pending.value) {
+	// 	setTimeout(() => {
+	// 		loading.value = false
+	// 	}, 1000)
+	// }
+	
+	console.log(dataPerson)
+	
 	const persons = dataPerson?.data
-	const skills = dataSkill?.data
+	const projects = dataPerson?.data
+
+
 </script>

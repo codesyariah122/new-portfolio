@@ -14,7 +14,9 @@
 								<span>{{person.bio[2].children[0].text}} ...</span>
 							</blockquote>
 							<div class="flex mt-4 md:mt-6">
-								<a href="/about" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">See More About &nbsp;&nbsp; <font-awesome-icon icon="px-2 fa-solid fa-arrow-right-from-bracket" /></a>
+								<NuxtLink to="/about" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+									See More About &nbsp;&nbsp; <font-awesome-icon icon="px-2 fa-solid fa-arrow-right-from-bracket" />
+								</NuxtLink>
 								<a @click="whatsappRedirect" class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><font-awesome-icon icon="px-2 fa-brands fa-whatsapp" /> Chat Me</a>
 							</div>
 						</div>
@@ -26,7 +28,7 @@
 					</div>
 
 					<div class="col-span-2 md:col-start-2">
-						<div class="grid grid-cols-1 w-full min-w-xl bg-stone-200 rounded-lg shadow dark:bg-gray-800 p-6 md:h-40 h-48">
+						<div class="grid grid-cols-1 w-full min-w-xl bg-stone-200 rounded-lg shadow p-6 md:h-40 h-48 overflow-auto">
 							<div class="flex justify-between flex-col space-x-6 rounded-lg md:flex-row md:max-w-xl">
 								<div class="shrink-0 w-80">
 									<h2 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">{{person.name}}</h2>
@@ -83,17 +85,20 @@
 								</div>
 							</div>
 							<div class="grid grid-cols-3 gap-4 py-6">
-								<div v-for="skill in skills" :key="Math.random()" class="mb-8">
-									<div class="flex justify-between mb-2">
+								<div v-for="skill in skills" :key="Math.random()" class="skills-grid-item mb-8 relative">
+									<div class="flex justify-between mb-2.5">
 										<span class="text-base font-medium text-blue-700 dark:text-white">
-											<img class="h-6" :src="$urlFor(skill.mainImage).url()" :alt="skill.title"/>
+											<img class="h-6 w-8" :src="$urlFor(skill.mainImage).url()" :alt="skill.title"/>
 										</span>
 										<span class="text-sm font-medium text-blue-700 dark:text-white">{{skill.percentage}}%</span>
 									</div>
 									<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 -mt-2">
 										<div class="bg-blue-600 h-2.5 rounded-full" :style="`width: ${skill.percentage}%`"></div>
 									</div>
+									<div class="absolute right-0 top-0 bottom-0 border-l border-gray-300 dark:border-gray-600"></div>
+
 								</div>
+
 							</div>
 						</div>
 					</div>
@@ -119,3 +124,17 @@
 		window.open(`${whatsappUrl}${encodeText}`)
 	}
 </script>
+
+<style scoped lang="css">
+	.skills-grid-item {
+		padding-right: 5px;
+	}
+
+	.skills-grid-item:last-child {
+		padding-right: 5px;
+	}
+
+	.skills-grid-item .absolute {
+		width: 5px;
+	}
+</style>
