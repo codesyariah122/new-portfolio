@@ -18,6 +18,12 @@
 		layout: 'default'
 	})
 
+	defineOgImageComponent('Nuxt', {
+		headline: 'Greetings',
+		title: 'Hello OG Image 👋',
+		description: 'Look what at me using the Nuxt template',
+	})
+
 	const config = useRuntimeConfig()
 	const apiConfig = {
 		github_url: config.public.NUXT_APP_GITHUB_API_URL,

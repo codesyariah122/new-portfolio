@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  ssr: false,
+  ssr: true,
   target: 'static',
   runtimeConfig: {
     public: {
@@ -26,6 +26,7 @@ css: [
   '@fortawesome/fontawesome-svg-core/styles.css'
   ],
 modules: [
+  'nuxt-og-image',
   '@nuxtjs/sanity',
   '@nuxtjs/tailwindcss',
   '@nuxtjs/device',
