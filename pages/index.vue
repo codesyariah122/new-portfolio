@@ -34,22 +34,17 @@
 
 	(async () => {
 		try {
-			// Set loading menjadi true saat melakukan fetch
 			loading.value = true;
 			const data = await fetchData(apiConfig, configRepo);
 			if (data.length > 0) {
-				// Set nilai repositories jika data berhasil diambil
 				repositories.value = data;
 			}
 		} catch (error) {
 			console.error('Terjadi kesalahan saat memanggil API:', error.message);
 		} finally {
-			// Set loading menjadi false setelah fetch selesai
 			loading.value = false;
 		}
 	})();
-
-	console.log(repositories?.value)
 
 	const sanity = useSanity()
 	const queryPerson = groq`*[_type == "person"]`;

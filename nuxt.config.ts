@@ -91,20 +91,57 @@ pwa: {
     theme_color: "#000",
     background_color: "#000",
     icons: [
-    {
-      src: "/img/icons/apple-touch-icon-152x152.png",
-      sizes: "152x152",
-      type: "image/png",
-      purpose: "maskable any",
+      icons: [
+      {
+        src: "/img/icons/android-icon-48x48.png",
+        sizes: "48x48",
+        type: "image/png",
+        purpose: "maskable any",
+      },
+      {
+        src: "/img/icons/android-icon-72x72.png",
+        sizes: "72x72",
+        type: "image/png",
+        purpose: "maskable any",
+      },
+      {
+        src: "/img/icons/android-icon-96x96.png",
+        sizes: "96x96",
+        type: "image/png",
+        purpose: "maskable any",
+      },
+      {
+        src: "/img/icons/android-icon-144x144.png",
+        sizes: "144x144",
+        type: "image/png",
+        purpose: "maskable any",
+      },
+      {
+        src: "/img/icons/apple-icon-152x152.png",
+        sizes: "152x152",
+        type: "image/png",
+        purpose: "maskable any",
+      },
+      {
+        src: "/img/icons/android-icon-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "maskable any",
+      },
+      {
+        src: "/img/icons/android-chrome-maskable-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "maskable any",
+      },
+      ],
     },
-    ],
   },
-},
-buildModules: [
-  '@nuxtjs/dotenv'
-  ],
-plugins: [
-  '~/plugins/fontawesome',
-  '~/plugins/sanity-image-url',
-  ]
+  buildModules: [
+    '@nuxtjs/dotenv'
+    ],
+  plugins: [
+    '~/plugins/fontawesome',
+    '~/plugins/sanity-image-url',
+    ]
 })

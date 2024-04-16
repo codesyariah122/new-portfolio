@@ -61,7 +61,7 @@
     ogTitle: 'PUJIERMANTO::PORTFOLIO',
     description: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya...',
     ogDescription: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya',
-    ogImage: 'https://pujiermanto-portfolio.vercel.app/',
+    ogImage: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg',
     twitterCard: 'summary_large_image',
   })
 
