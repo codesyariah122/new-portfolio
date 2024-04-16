@@ -91,8 +91,13 @@ pwa: {
     theme_color: "#000",
     background_color: "#000",
     icons: [
-
-      ],
+    {
+      src: "/img/icons/apple-touch-icon-152x152.png",
+      sizes: "152x152",
+      type: "image/png",
+      purpose: "maskable any",
+    },
+    ],
   },
 },
 buildModules: [
