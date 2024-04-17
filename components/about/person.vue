@@ -48,7 +48,7 @@
 											<dt class="text-md font-medium text-stone-500 dark:text-stone-400">
 												Full Name
 											</dt>
-											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2">
+											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2 font-semibold">
 												{{person.name}}
 											</dd>
 										</div>
@@ -56,23 +56,27 @@
 											<dt class="text-md font-medium text-stone-500 dark:text-stone-400">
 												Email
 											</dt>
-											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2">
-												{{person.contactInfo.email}}
+											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2 font-semibold">
+												<a :href="`mailto:${person.contactInfo.email}`" class="text-blue-400 hover:text-blue-500">
+													{{person.contactInfo.email}}
+												</a>
 											</dd>
 										</div>
 										<div class="bg-stone-50 dark:bg-stone-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 											<dt class="text-md font-medium text-stone-500 dark:text-stone-400">
 												Phone
 											</dt>
-											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2">
-												{{person.contactInfo.phone}}
+											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2 font-semibold">
+												<a :href="`tel:${person.contactInfo.phone}`" class="text-blue-400 hover:text-blue-500">
+													{{person.contactInfo.phone}}
+												</a>
 											</dd>
 										</div>
 										<div class="bg-stone-50 dark:bg-stone-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 											<dt class="text-md font-medium text-stone-500 dark:text-stone-400">
 												Story
 											</dt>
-											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2">
+											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2 text-indent-8 text-justify">
 												<span v-html="person.bio[4].children[0].text"></span>
 												<br>
 												<span>

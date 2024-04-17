@@ -14,6 +14,14 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="grid grid-cols-1">
+						<div class="col-span-full p-6">
+							<button @click="backTo" type="button" class="max-w-md w-md text-center text-white bg-emerald-700 hover:bg-emerald-800 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm p-2">
+								<font-awesome-icon icon="px-2 fa-solid fa-chevron-left" /> Kembali
+							</button>
+						</div>
+					</div>
 					<div class="grid grid-cols-1 py-2 mb-4">
 						<div class="col-span-full p-6 indent-8 text-justify text-nowrap leading-loose">
 							<project-block :blocks="project.body"  />
@@ -37,9 +45,11 @@
 </template>
 
 <script setup>
+
 	definePageMeta({
 		layout: 'default'
 	})
+	let router = useRouter()
 	const route = useRoute()
 	const slug = route.params.slug
 	const sanity = useSanity()
@@ -79,4 +89,8 @@
 
 	const persons = dataPerson?.data
 	const project = dataProject?.data
+
+	const backTo = () => {
+		router.push('/about')
+	}
 </script>
