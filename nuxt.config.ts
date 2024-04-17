@@ -17,12 +17,7 @@ export default defineNuxtConfig({
 },
 
 body: true,
-components: [
-{
-  path: '~/components',
-  pathPrefix: false,    
-}
-],
+components: true,
 
 head: {
   title: "PujiErmanto::Portfolio",
