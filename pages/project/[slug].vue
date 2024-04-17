@@ -24,7 +24,7 @@
 					</div> -->
 					<div class="grid grid-cols-1 py-2 mb-4">
 						<div class="col-span-full p-6 indent-8 text-justify text-nowrap leading-loose">
-							<!-- <project-block :blocks="project.body"  /> -->
+							<project-block :blocks="project.body"  />
 						</div>
 					</div>
 					<div class="grid grid-cols-1">
