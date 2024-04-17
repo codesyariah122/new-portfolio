@@ -9,7 +9,7 @@
 								<img class="w-full" :src="$urlFor(person.aboutImage).url()" :alt="person.aboutImage.caption" />
 								<div class="text-center absolute w-full" style="bottom: 4rem">
 									<p class="text-yellow-100 tracking-wide uppercase text-lg font-bold">{{person.aboutImage.caption}}</p>
-									<p><a :href="`https://instagram.com/${person.contactInfo.instagram}`" target="_blank" class="text-green-100 text-sm hover:text-green-400">@{{person.contactInfo.instagram}}</a></p>
+									<p><a :href="`https://instagram.com/${person.contactInfo.instagram}`" target="_blank" class="text-green-100 text-md hover:text-green-400">@{{person.contactInfo.instagram}}</a></p>
 								</div>
 							</div>
 							<div class="relative flex justify-between items-center flex-row px-6 z-50 -mt-10">
@@ -45,39 +45,36 @@
 									<h3 class="text-lg p-4 font-medium text-stone-900 dark:text-white">About Me 📙</h3>
 								</div>
 								<div class="border-t border-stone-200 dark:border-stone-700">
-									<!-- <pre>
-										{{person}}
-									</pre> -->
 									<dl>
 										<div class="bg-stone-50 dark:bg-stone-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-											<dt class="text-sm font-medium text-stone-500 dark:text-stone-400">
+											<dt class="text-md font-medium text-stone-500 dark:text-stone-400">
 												Full Name
 											</dt>
-											<dd class="mt-1 text-sm text-stone-900 dark:text-white sm:col-span-2">
+											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2">
 												{{person.name}}
 											</dd>
 										</div>
 										<div class="bg-white dark:bg-stone-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-											<dt class="text-sm font-medium text-stone-500 dark:text-stone-400">
+											<dt class="text-md font-medium text-stone-500 dark:text-stone-400">
 												Email
 											</dt>
-											<dd class="mt-1 text-sm text-stone-900 dark:text-white sm:col-span-2">
+											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2">
 												{{person.contactInfo.email}}
 											</dd>
 										</div>
 										<div class="bg-stone-50 dark:bg-stone-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-											<dt class="text-sm font-medium text-stone-500 dark:text-stone-400">
+											<dt class="text-md font-medium text-stone-500 dark:text-stone-400">
 												Phone
 											</dt>
-											<dd class="mt-1 text-sm text-stone-900 dark:text-white sm:col-span-2">
+											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2">
 												{{person.contactInfo.phone}}
 											</dd>
 										</div>
 										<div class="bg-stone-50 dark:bg-stone-800 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-											<dt class="text-sm font-medium text-stone-500 dark:text-stone-400">
+											<dt class="text-md font-medium text-stone-500 dark:text-stone-400">
 												Story
 											</dt>
-											<dd class="mt-1 text-sm text-stone-900 dark:text-white sm:col-span-2">
+											<dd class="mt-1 text-md text-stone-900 dark:text-white sm:col-span-2">
 												<span v-html="person.bio[4].children[0].text"></span>
 												<br>
 												<span>

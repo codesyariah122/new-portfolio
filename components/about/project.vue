@@ -14,12 +14,12 @@
 					<div class="grid grid-cols-1 md:grid md:grid-cols-2 gap-4">
 						<div v-for="project in projects" :key="project._id">
 							<div class="grid grid-cols-1 bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-								<div class="flex justify-between space-x-4">
-									<div>
+								<div class="grid grid-cols-1 md:flex md:justify-between space-x-4">
+									<div class="col-span-full md:shrink-0">
 										<img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" :src="$urlFor(project.mainImage).url()" :alt="project.mainImage.alt">
 									</div>
 
-									<div>
+									<div class="col-span-full md:shrink-0">
 										<div class="grid grid-cols-1 p-4 leading-normal">
 											<div class="col-span-full">	
 												<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize">
@@ -29,7 +29,7 @@
 										</div>
 										<div class="grid grid-cols-1">
 											<div class="col-span-full">
-												<p class="mb-3 font-normal text-gray-700 truncate w-60 text-nowrap">
+												<p class="mb-3 text-md font-normal text-gray-700 truncate w-60 text-nowrap">
 													{{project.excerpt[0].children[0].text}}
 												</p>
 											</div>
