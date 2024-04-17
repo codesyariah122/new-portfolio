@@ -14,7 +14,7 @@
 
 
 <script>
-	import { SanityBlocks } from "sanity-blocks-vue-component"
+	import SanityBlocks from "sanity-blocks-vue-component"
 
 	export default {
 		props: {
