@@ -3,7 +3,7 @@
 		<div v-for="(person, idx) in persons" :key="idx">
 			<div v-if="person.name === 'Puji Ermanto'">
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-					<div class="col-span-1 w-full max-w-sm">
+					<div class="col-span-1 w-full max-w-md">
 						<div class="container mx-auto rounded-lg overflow-hidden shadow-lg my-2 bg-white">
 							<div class="relative z-10" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));">
 								<img class="w-full" :src="$urlFor(person.aboutImage).url()" :alt="person.aboutImage.caption" />
