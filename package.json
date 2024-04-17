@@ -19,6 +19,7 @@
     "@stefanobartoletti/nuxt-social-share": "^0.6.0",
     "flowbite": "^2.3.0",
     "nuxt": "^3.11.2",
+    "sanity-blocks-vue-component": "^1.0.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "vue3-carousel-nuxt": "^1.1.1"

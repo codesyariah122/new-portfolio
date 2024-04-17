@@ -1,0 +1,82 @@
+<template>
+	<div class="p-4 px-4">
+		<div class="grid grid-cols-1 mb-36">
+			<div class="col-span-full">
+				<div class="w-full min-w-xl bg-stone-300 border border-stone-600 rounded-lg shadow-2xl p-4 h-auto">
+					<div class="grid grid-cols-1">
+						<div class="col-span-full">
+							<div class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply" :style="`background-image: url('${$urlFor(project.mainImage)}')`">
+								<div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+									<h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white border-4 md:text-5xl lg:text-6xl">
+										{{project.title}}
+									</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="grid grid-cols-1 py-2 mb-4">
+						<div class="col-span-full p-6 indent-8 text-justify text-nowrap leading-loose">
+							<project-block :blocks="project.body"  />
+						</div>
+					</div>
+					<div class="grid grid-cols-1">
+						<div class="col-span-full py-6 p-4">
+							<h3>Project Galleries :</h3>
+							<blockquote class="mt-2">
+								Sedikit dokumentasi hasil kerja saya sebagai : <strong class="capitalize"> {{project.title}} </strong>
+							</blockquote>
+						</div>
+						<div>
+							<project-gallery :galleries="project.imagesGallery" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script setup>
+	definePageMeta({
+		layout: 'default'
+	})
+	const route = useRoute()
+	const slug = route.params.slug
+	const sanity = useSanity()
+	const config = useRuntimeConfig()
+	const apiConfig = {
+		image_url: config.public.NUXT_APP_GALLERY_URL
+	}
+
+	const queryPerson = `*[_type == "person"] {
+		_id,
+		name,
+		slug,
+		jobdesk,
+		contactInfo,
+		image,
+		aboutImage,
+		excerpt,
+		bio
+	}[3]`
+
+	const queryProject = `*[slug.current == $slug] {
+		_id,
+		title,
+		slug,
+		categories,
+		members,
+		startedAt,
+		endedAt,
+		mainImage,
+		imagesGallery,
+		excerpt,
+		body,
+		linksVideo
+	}[0]`
+	const dataPerson = await useAsyncData('person', () => sanity.fetch(queryPerson))
+	const dataProject = await useAsyncData('project', () => sanity.fetch(queryProject, {slug: slug}))
+
+	const persons = dataPerson?.data
+	const project = dataProject?.data
+</script>

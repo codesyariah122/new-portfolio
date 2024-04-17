@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     public: {
      NUXT_APP_GITHUB_API_URL: process.env.NUXT_APP_GITHUB_API_URL,
      NUXT_APP_GITHUB_USER: process.env.NUXT_APP_GITHUB_USER,
-     NUXT_APP_ACCESS_TOKEN: process.env.NUXT_APP_ACCESS_TOKEN
+     NUXT_APP_ACCESS_TOKEN: process.env.NUXT_APP_ACCESS_TOKEN,
+     NUXT_APP_GALLERY_URL: process.env.NUXT_APP_GALLERY_URL
    },
  },
  alias: {
@@ -16,7 +17,12 @@ export default defineNuxtConfig({
 },
 
 body: true,
-components: true,
+components: [
+{
+  path: '~/components',
+  pathPrefix: true,    
+}
+],
 
 head: {
   title: "PujiErmanto::Portfolio",

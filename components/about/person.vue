@@ -3,27 +3,25 @@
 		<div v-for="(person, idx) in persons" :key="idx">
 			<div v-if="person.name === 'Puji Ermanto'">
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-					<div class="col-span-1 w-full max-w-md">
+					<div class="col-span-1 w-full md:max-w-md max-w-full">
 						<div class="container mx-auto rounded-lg overflow-hidden shadow-lg my-2 bg-white">
-							<div class="relative z-10" style="clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));">
+							<div class="relative z-10" style="clip-path: polygon(0 0, 100% 0, 100% 105%, 0 calc(100% - 5vw));">
 								<img class="w-full" :src="$urlFor(person.aboutImage).url()" :alt="person.aboutImage.caption" />
-								<div class="text-center absolute w-full" style="bottom: 4rem">
-									<p class="text-yellow-100 tracking-wide uppercase text-lg font-bold">{{person.aboutImage.caption}}</p>
-									<p><a :href="`https://instagram.com/${person.contactInfo.instagram}`" target="_blank" class="text-green-100 text-md hover:text-green-400">@{{person.contactInfo.instagram}}</a></p>
+								<div class="text-center absolute w-full" style="bottom: 2rem">
+									<p class="text-orange-400 text-center tracking-wide uppercase text-lg font-bold">{{person.aboutImage.caption}} 🕊️🇵🇸فلسطين 🇵🇸🕊️</p>
+									<p><a :href="`https://instagram.com/${person.contactInfo.instagram}`" target="_blank" class="text-emerald-400 text-md hover:text-green-500">@{{person.contactInfo.instagram}}</a></p>
 								</div>
 							</div>
 							<div class="relative flex justify-between items-center flex-row px-6 z-50 -mt-10">
 								<p class="flex items-center text-gray-400"><span class="inline-block w-3 h-3 bg-green-500 rounded-full mr-2"></span>online</p>
-								<button class="p-4 bg-red-600 rounded-full hover:bg-red-500 focus:bg-red-700 transition ease-in duration-200 focus:outline-none">
-									<svg viewBox="0 0 20 20" enable-background="new 0 0 20 20" class="w-6 h-6">
-										<path fill="#FFFFFF" d="M16,10c0,0.553-0.048,1-0.601,1H11v4.399C11,15.951,10.553,16,10,16c-0.553,0-1-0.049-1-0.601V11H4.601
-										C4.049,11,4,10.553,4,10c0-0.553,0.049-1,0.601-1H9V4.601C9,4.048,9.447,4,10,4c0.553,0,1,0.048,1,0.601V9h4.399
-										C15.952,9,16,9.447,16,10z" />
-									</svg>
+								<button @click="downloadCV" class="p-4 bg-red-600 rounded-full hover:bg-red-500 focus:bg-red-700 transition ease-in duration-200 focus:outline-none text-stone-200 hover:text-stone-400">
+									<font-awesome-icon icon="fa-solid fa-download" /> My CV
 								</button>
 							</div>
-							<div class="pt-6	 text-gray-600 text-center">
-								<p>{{person.jobdesk}}</p>
+							<div class="pt-6 text-gray-600 text-center">
+								<span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-indigo-400 border border-indigo-400">
+									{{person.jobdesk}}
+								</span>
 								<blockquote v-for="text in person.bio[3].children" class="p-6 text-justify leading-loose">
 									<span v-if="text.text !== 'codesyariah122 Blog'">
 										{{text.text}}
@@ -123,6 +121,10 @@
 	const props = defineProps({
 		persons: Array
 	});
+
+	const downloadCV = () => {
+		window.open('https://github.com/codesyariah122/codesyariah122/blob/main/pujiermanto-fresh-cv.pdf')
+	}
 
 	function whatsappRedirect() {
 		const whatsappNumber = '6288222668778';

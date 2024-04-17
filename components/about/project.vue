@@ -14,34 +14,37 @@
 					<div class="grid grid-cols-1 md:grid md:grid-cols-2 gap-4">
 						<div v-for="project in projects" :key="project._id">
 							<div class="grid grid-cols-1 bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-								<div class="grid grid-cols-1 md:flex md:justify-between space-x-4">
-									<div class="col-span-full md:shrink-0">
-										<img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" :src="$urlFor(project.mainImage).url()" :alt="project.mainImage.alt">
+								<div class="grid grid-cols-1">
+									<div class="col-span-full">
+										<img class="object-cover w-full rounded-t-sm h-96" :src="$urlFor(project.mainImage).url()" :alt="project.mainImage.alt">
 									</div>
-
-									<div class="col-span-full md:shrink-0">
-										<div class="grid grid-cols-1 p-4 leading-normal">
-											<div class="col-span-full">	
-												<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize">
-													{{project.title}}
-												</h5>
+								</div>
+								<div class="grid grid-cols-1">
+									<div class="col-span-full">
+										<div class="col-span-full md:shrink-0">
+											<div class="grid grid-cols-1 p-2 leading-normal">
+												<div class="col-span-full">	
+													<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize">
+														{{project.title}}
+													</h5>
+												</div>
 											</div>
-										</div>
-										<div class="grid grid-cols-1">
-											<div class="col-span-full">
-												<p class="mb-3 text-md font-normal text-gray-700 truncate w-60 text-nowrap">
-													{{project.excerpt[0].children[0].text}}
-												</p>
+											<div class="grid grid-cols-1">
+												<div class="col-span-full">
+													<p class="mb-3 text-md font-normal text-gray-700 truncate  text-nowrap">
+														{{project.excerpt[0].children[0].text}}
+													</p>
+												</div>
 											</div>
-										</div>
 
-										<div class="grid grid-cols-1">
-											<div class="place-self-start">
-												<h5 class="text-stone-400 font-semibold text-sm">Team Member : </h5>
-												<div class="flex justify-start space-x-2 p-2" v-if="project.members !== null">
-													<div v-for="person in persons" :key="person._id">
-														<div v-for="member in project.members">
-															<img v-if="member.person._ref === person._id" class="w-6 h-6 mb-3 rounded-full shadow-lg" :src="$urlFor(person.image).url()" :alt="person.image.alt"/>
+											<div class="grid grid-cols-1">
+												<div class="place-self-start">
+													<h5 class="text-stone-400 font-semibold text-sm">Team Member : </h5>
+													<div class="flex justify-start space-x-2 p-2" v-if="project.members !== null">
+														<div v-for="person in persons" :key="person._id">
+															<div v-for="member in project.members">
+																<img v-if="member.person._ref === person._id" class="w-6 h-6 mb-3 rounded-full shadow-lg" :src="$urlFor(person.image).url()" :alt="person.image.alt"/>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -52,9 +55,9 @@
 
 								<div class="grid grid-cols-1 p-6 mb-2">
 									<div class="col-span-full">
-										<button type="button" class="max-w-lg w-full text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2">
+										<a :href="`/project/${project?.slug?.current}`" type="button" class="max-w-lg w-full text-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2">
 											<font-awesome-icon icon="px-2 fa-solid fa-circle-info" /> Detail Project
-										</button>
+										</a>
 									</div>
 								</div>
 							</div>
@@ -71,4 +74,9 @@
 		projects: Array,
 		persons: Array
 	});
+	const router = useRouter()
+
+	const detailProject = (slug) => {
+		router.push({path: `/project/${slug}`})
+	}
 </script>
