@@ -20,7 +20,7 @@ body: true,
 components: [
 {
   path: '~/components',
-  pathPrefix: true,    
+  pathPrefix: false,    
 }
 ],
 

@@ -13,24 +13,33 @@
 </template>
 
 
-<script setup>
-
+<script>
 	import { SanityBlocks } from "sanity-blocks-vue-component"
 
-	const props = defineProps({
-		blocks: Array
-	});
+	export default {
+		props: {
+			blocks: {
+				type: Array
+			}
+		},
 
-	const renderBlock = (block) => {
-		if (block._type === 'block') {
-			return block.children.map(child => {
-				console.log(child)
-				if (child.marks && child.marks.find(mark => mark._type === 'link')) {
-					return `<a href="${child.marks[0].href}" class="text-blue-400 hover:text-blue-600">${child.text}</a>`;
-				} else {
-					return child.text;
+		components: {
+			SanityBlocks
+		},
+
+		methods: {
+			renderBlock(block) {
+				if (block._type === 'block') {
+					return block.children.map(child => {
+						console.log(child)
+						if (child.marks && child.marks.find(mark => mark._type === 'link')) {
+							return `<a href="${child.marks[0].href}" class="text-blue-400 hover:text-blue-600">${child.text}</a>`;
+						} else {
+							return child.text;
+						}
+					}).join('');
 				}
-			}).join('');
+			}
 		}
-	};
+	}
 </script>
