@@ -5,6 +5,7 @@
 		</div>
 		<div v-else>
 			<about-person :persons="persons"/>
+			<about-project :projects="projects" :persons="persons"/>
 		</div>
 	</div>
 </template>
@@ -81,18 +82,12 @@
 	const dataPerson = await useAsyncData('person', () => sanity.fetch(queryPerson))
 	const dataProject = await useAsyncData('project', () => sanity.fetch(queryProject))
 
-	// console.log(pending.value)
-
-	// if(!pending.value) {
-	// 	setTimeout(() => {
-	// 		loading.value = false
-	// 	}, 1000)
-	// }
-	
-	console.log(dataPerson)
+	setTimeout(() => {
+		loading.value = false
+	}, 1000)
 	
 	const persons = dataPerson?.data
-	const projects = dataPerson?.data
+	const projects = dataProject?.data
 
 
 </script>

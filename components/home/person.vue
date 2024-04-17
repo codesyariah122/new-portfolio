@@ -88,7 +88,7 @@
 								<div v-for="skill in skills" :key="Math.random()" class="skills-grid-item mb-8 relative">
 									<div class="flex justify-between mb-2.5">
 										<span class="text-base font-medium text-blue-700 dark:text-white">
-											<img class="h-6 w-8" :src="$urlFor(skill.mainImage).url()" :alt="skill.title"/>
+											<img class="h-6" :src="$urlFor(skill.mainImage).url()" :alt="skill.title"/>
 										</span>
 										<span class="text-sm font-medium text-blue-700 dark:text-white">{{skill.percentage}}%</span>
 									</div>

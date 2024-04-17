@@ -2,7 +2,7 @@
 	<div class="mt-16 p-4 px-4">
 		<div class="grid grid-cols-1 mb-36">
 			<div class="col-span-full">
-				<div class="w-full min-w-xl bg-stone-400 border border-gray-600 rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700 p-4 h-auto">
+				<div class="w-full min-w-xl bg-stone-400 border border-gray-600 rounded-lg shadow-2xl p-4 h-auto">
 					<div class="grid grid-cols-1 place-content-center place-items-center mb-8">
 						<div>
 							<h2 class="mb-2 text-4xl font-bold tracking-tight text-white dark:text-white">
