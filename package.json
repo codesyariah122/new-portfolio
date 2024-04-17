@@ -17,6 +17,7 @@
     "@nuxt/image": "^1.5.0",
     "@sanity/image-url": "^1.0.2",
     "@stefanobartoletti/nuxt-social-share": "^0.6.0",
+    "@unocss/preset-wind": "^0.59.3",
     "flowbite": "^2.3.0",
     "nuxt": "^3.11.2",
     "sanity-blocks-vue-component": "^1.0.1",
