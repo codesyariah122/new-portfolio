@@ -37,7 +37,7 @@
 
 	function updateCarouselItemsToShow() {
 		if (window.innerWidth < 768) {
-			carouselItemsToShow.value = 2.5;
+			carouselItemsToShow.value = 1;
 		} else {
 			carouselItemsToShow.value = 1;
 		}
