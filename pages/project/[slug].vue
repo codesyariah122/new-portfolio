@@ -7,7 +7,7 @@
 						<div class="col-span-full">
 							<div class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply" :style="`background-image: url('${$urlFor(project.mainImage)}')`">
 								<div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-									<h1 class="mb-4 text-4xl font-extrabold tracking-tight md:leading-none leading-relaxed text-white border-4 md:text-5xl lg:text-6xl">
+									<h1 class="mb-4 text-4xl font-extrabold tracking-tight md:leading-none leading-relaxed capitalize text-white border-4 md:text-5xl lg:text-6xl">
 										{{project.title}}
 									</h1>
 								</div>
@@ -45,6 +45,7 @@
 </template>
 
 <script setup>
+	import { onMounted } from 'vue'
 
 	definePageMeta({
 		layout: 'default'
@@ -94,37 +95,39 @@
 		router.push('/about')
 	}
 
-	defineOgImageComponent('Nuxt', {
-		headline: `Detail Project -  ${dataProject?.data?.title}`,
-		title: `PujiErmanto on ${dataProject?.data?.title}`,
-		description: `Hello, ini adalah pengalamanku saat bekerja di ${dataProject?.data?.title}`,
+	onMounted(async () => {
+		defineOgImageComponent('Nuxt', {
+			headline: `Detail Project -  ${dataProject?.data?.title}`,
+			title: `PujiErmanto on ${dataProject?.data?.title}`,
+			description: `Hello, ini adalah pengalamanku saat bekerja di ${dataProject?.data?.title}`,
+		})
+
+		useHead({
+			title: `DetailProject::${dataProject?.data?.title}`,
+			meta: [
+				{ name: 'description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya' },
+				{
+					name: 'og:title', content: 'PUJIERMANTO::PORTFOLIO'
+				},
+				{
+					name: 'description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya...'
+				},
+				{
+					name: 'og:description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya'
+				},
+				{
+					name: 'og:image', content: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg'
+				}
+				],
+		});
+
+		useSeoMeta({
+			title: `DetailProject::${dataProject?.data?.title}`,
+			ogTitle: `DetailProject::${dataProject?.data?.title}`,
+			description: `Hello, ini adalah pengalamanku saat bekerja di ${dataProject?.data?.title}`,
+			ogDescription: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya',
+			ogImage: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg',
+			twitterCard: 'summary_large_image',
+		});
 	})
-
-	useHead({
-		title: `DetailProject::${dataProject?.data?.title}`,
-		meta: [
-			{ name: 'description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya' },
-			{
-				name: 'og:title', content: 'PUJIERMANTO::PORTFOLIO'
-			},
-			{
-				name: 'description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya...'
-			},
-			{
-				name: 'og:description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya'
-			},
-			{
-				name: 'og:image', content: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg'
-			}
-			],
-	});
-
-	useSeoMeta({
-		title: `DetailProject::${dataProject?.data?.title}`,
-		ogTitle: `DetailProject::${dataProject?.data?.title}`,
-		description: `Hello, ini adalah pengalamanku saat bekerja di ${dataProject?.data?.title}`,
-		ogDescription: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya',
-		ogImage: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg',
-		twitterCard: 'summary_large_image',
-	});
 </script>
