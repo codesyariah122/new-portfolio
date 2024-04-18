@@ -23,7 +23,7 @@
 						</div>
 					</div>
 					<div class="grid grid-cols-1 py-2 mb-4">
-						<div class="col-span-full max-w-md md:w-full w-90 p-6 indent-8 text-justify text-nowrap leading-loose">
+						<div class="col-span-full max-w-md md:w-full w-90 p-6 indent-8 text-justify">
 							<project-block :blocks="project.body"  />
 						</div>
 					</div>
