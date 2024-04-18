@@ -19,9 +19,9 @@
 	})
 
 	defineOgImageComponent('Nuxt', {
-		headline: 'Greetings',
-		title: 'Hello OG Image 👋',
-		description: 'Look what at me using the Nuxt template',
+		headline: 'Greetings 👋',
+		title: 'Selamat Datang di Portfolio Puji Ermanto',
+		description: 'Hello, saya Puji Ermanto biasa dipanggil Uji , saya seorang web developer / programmer, jika kalian membutuhkan jasa webdeveloper atau web programmer untuk membuatkan system atau untuk profile bisnis kalian, kalian bisa kontak saya di website berikut ini, salaam...',
 	})
 
 	useHead({

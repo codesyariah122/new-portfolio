@@ -93,4 +93,38 @@
 	const backTo = () => {
 		router.push('/about')
 	}
+
+	defineOgImageComponent('Nuxt', {
+		headline: `Detail Project -  ${project.title}`,
+		title: `PujiErmanto on ${project.title}`,
+		description: `Hello, ini adalah pengalamanku saat bekerja di ${project.title}`,
+	})
+
+	useHead({
+		title: `DetailProject::${project.title}`,
+		meta: [
+			{ name: 'description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya' },
+			{
+				name: 'og:title', content: 'PUJIERMANTO::PORTFOLIO'
+			},
+			{
+				name: 'description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya...'
+			},
+			{
+				name: 'og:description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya'
+			},
+			{
+				name: 'og:image', content: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg'
+			}
+			],
+	});
+
+	useSeoMeta({
+		title: 'About::Me',
+		ogTitle: 'About::Me',
+		description: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya...',
+		ogDescription: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya',
+		ogImage: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg',
+		twitterCard: 'summary_large_image',
+	});
 </script>
