@@ -2,7 +2,7 @@
 	<div>
 		<div v-for="(block, index) in blocks" :key="index">
 			<template v-if="block._type === 'block'">
-				<p class="md:w-full w-90" v-html="renderBlock(block)"></p>			
+				<p v-html="renderBlock(block)"></p>			
 			</template>
 		</div>
 		<!-- <SanityBlocks :blocks="blocks" /> -->
