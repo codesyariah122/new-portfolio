@@ -98,8 +98,9 @@
 	onMounted(async () => {
 		await dataProject
 		await project
-		
-		defineOgImageComponent('Nuxt', {
+
+		defineOgImageComponent({
+			component: 'root',
 			headline: `Detail Project -  ${project.title}`,
 			title: `PujiErmanto on ${project.title}`,
 			description: `Hello, ini adalah pengalamanku saat bekerja di ${project.title}`,
