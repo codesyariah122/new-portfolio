@@ -96,14 +96,17 @@
 	}
 
 	onMounted(async () => {
+		await dataProject
+		await project
+		
 		defineOgImageComponent('Nuxt', {
-			headline: `Detail Project -  ${dataProject?.data?.title}`,
-			title: `PujiErmanto on ${dataProject?.data?.title}`,
-			description: `Hello, ini adalah pengalamanku saat bekerja di ${dataProject?.data?.title}`,
+			headline: `Detail Project -  ${project.title}`,
+			title: `PujiErmanto on ${project.title}`,
+			description: `Hello, ini adalah pengalamanku saat bekerja di ${project.title}`,
 		})
 
 		useHead({
-			title: `DetailProject::${dataProject?.data?.title}`,
+			title: `DetailProject::${project.title}`,
 			meta: [
 				{ name: 'description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya' },
 				{
@@ -122,9 +125,9 @@
 		});
 
 		useSeoMeta({
-			title: `DetailProject::${dataProject?.data?.title}`,
-			ogTitle: `DetailProject::${dataProject?.data?.title}`,
-			description: `Hello, ini adalah pengalamanku saat bekerja di ${dataProject?.data?.title}`,
+			title: `DetailProject::${project.title}`,
+			ogTitle: `DetailProject::${project.title}`,
+			description: `Hello, ini adalah pengalamanku saat bekerja di ${project.title}`,
 			ogDescription: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya',
 			ogImage: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg',
 			twitterCard: 'summary_large_image',
