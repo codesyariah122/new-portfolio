@@ -7,7 +7,7 @@
 						<div class="col-span-full">
 							<div class="bg-center bg-no-repeat bg-gray-700 bg-blend-multiply" :style="`background-image: url('${$urlFor(project.mainImage)}')`">
 								<div class="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
-									<h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-white border-4 md:text-5xl lg:text-6xl">
+									<h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-4 text-white border-4 md:text-5xl lg:text-6xl">
 										{{project.title}}
 									</h1>
 								</div>
