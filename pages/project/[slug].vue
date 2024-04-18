@@ -23,7 +23,7 @@
 						</div>
 					</div>
 					<div class="grid grid-cols-1 py-2 mb-4">
-						<div class="col-span-full max-w-md md:w-full w-90 p-6 indent-8 text-justify">
+						<div class="col-span-full max-w-full md:w-full w-90 p-6 indent-8 text-justify">
 							<project-block :blocks="project.body"  />
 						</div>
 					</div>
@@ -99,15 +99,17 @@
 		await dataProject
 		await project
 
+		console.log(project.value.title)
+
 		defineOgImageComponent({
 			component: 'root',
-			headline: `Detail Project -  ${project.title}`,
-			title: `PujiErmanto on ${project.title}`,
-			description: `Hello, ini adalah pengalamanku saat bekerja di ${project.title}`,
+			headline: `Detail Project -  ${project.value.title}`,
+			title: `PujiErmanto on ${project.value.title}`,
+			description: `Hello, ini adalah pengalamanku saat bekerja di ${project.value.title}`,
 		})
 
 		useHead({
-			title: `DetailProject::${project.title}`,
+			title: `DetailProject::${project.value.title}`,
 			meta: [
 				{ name: 'description', content: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya' },
 				{
@@ -126,9 +128,9 @@
 		});
 
 		useSeoMeta({
-			title: `DetailProject::${project.title}`,
-			ogTitle: `DetailProject::${project.title}`,
-			description: `Hello, ini adalah pengalamanku saat bekerja di ${project.title}`,
+			title: `DetailProject::${project.value.title}`,
+			ogTitle: `DetailProject::${project.value.title}`,
+			description: `Hello, ini adalah pengalamanku saat bekerja di ${project.value.title}`,
 			ogDescription: 'Halo, Saya Puji Ermanto biasa di panggil Uji / Puji Saya seorang professional web developer jika kalian ingin dibuatkan web silahkan hubungi saya',
 			ogImage: 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/this-is-how-i-roll-cannabis-thc-cbd-stoner-mister-tee.jpg',
 			twitterCard: 'summary_large_image',
