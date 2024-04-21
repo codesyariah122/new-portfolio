@@ -11,13 +11,16 @@
 						</div>
 					</div>
 					<div class="grid grid-cols-1 md:grid md:grid-cols-3 gap-4 ">
-						<div v-for="repo in repositories" :key="repo.id">
+						<div v-for="repo in repositories.slice(0, visibleRepos)" :key="repo.id">
 							<div class="w-full max-w-sm bg-stone-200 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
 								<div class="px-5 pb-5">
-									<a href="#">
+									<a :href="repo.html_url" target="_blank">
 										<h5 class="text-xl font-semibold capitalize tracking-tight text-gray-900 dark:text-white">
 											{{repo?.name}}
 										</h5>
+										<blockquote class="text-sm">
+											{{repo?.description}}
+										</blockquote>
 									</a>
 									<div class="flex items-center mt-2.5 mb-5">
 										<div v-for="num in repo?.stargazers_count" :key="num" class="flex items-center space-x-1 rtl:space-x-reverse">
@@ -30,13 +33,15 @@
 										</span>
 									</div>
 									<div class="flex items-center justify-between">
+										<img v-if="repo.language === 'SCSS'" src="/img/logos/sass.png" class="h-6"/>
+
 										<img v-if="repo.language === 'PHP'" src="/img/logos/php.png" class="h-6"/>
 										
 										<img v-if="repo.language === 'Vue'" src="/img/logos/vue.png" class="h-6"/>
 
 										<img v-if="repo.language === 'Html'" src="/img/logos/html5.png" class="h-6"/>
 
-										<img v-if="repo.language === 'Css'" src="/img/logos/css3.png" class="h-6"/>
+										<img v-if="repo.language === 'CSS'" src="/img/logos/css3.png" class="h-6"/>
 
 										<img v-if="repo.language === 'JavaScript'" src="/img/logos/js.png" class="h-6"/>
 
@@ -50,6 +55,20 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="grid grid-cols-1 py-12">
+						<div class="col-span-full place-self-center">
+							<button v-if="visibleRepos < repositories.length" @click="triggerLoadMore"  class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
+								<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+									Load More <font-awesome-icon icon="fa-solid fa-caret-down" /> <br>
+
+									<small class="text-sm text-red-600">
+										{{visibleRepos}} || {{repositories.length}}
+									</small>
+								</span>
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -58,10 +77,16 @@
 
 <script setup>
 	const props = defineProps({
-		repositories: Array
+		repositories: Array,
+		visibleRepos: Number
 	});
+	const emit = defineEmits(['load-more']);
 
 	function redirectRepo(url) {
 		window.open(url)
+	}
+
+	function triggerLoadMore() {
+		emit('load-more');
 	}
 </script>

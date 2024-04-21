@@ -5,7 +5,7 @@
 		</div>
 		<div v-else>
 			<home-person :persons="persons" :skills="skills"/>
-			<home-repositories :repositories="repositories" />
+			<home-repositories :visibleRepos="visibleRepos" :repositories="repositories" @load-more="loadMore"/>
 		</div>
 	</div>
 </template>
@@ -61,16 +61,18 @@
 	const configRepo = {
 		page: 1,
 		sort: 'created',
-		per_page: 25
+		per_page: 37
 	};
 	let repositories = ref([]);
 	let loading = ref(false);
+	const visibleRepos = ref(15);
 
 	(async () => {
 		try {
 			loading.value = true;
 			const data = await fetchData(apiConfig, configRepo);
 			if (data.length > 0) {
+				console.log(data.length)
 				repositories.value = data;
 			}
 		} catch (error) {
@@ -88,4 +90,8 @@
 
 	const persons = dataPerson?.data
 	const skills = dataSkill?.data
+
+	function loadMore() {
+		visibleRepos.value += 15;
+	}
 </script>
