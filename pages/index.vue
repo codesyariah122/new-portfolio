@@ -5,7 +5,7 @@
 		</div>
 		<div v-else>
 			<home-person :persons="persons" :skills="skills"/>
-			<home-repositories :visibleRepos="visibleRepos" :repositories="repositories" @load-more="loadMore"/>
+			<home-repositories :visibleRepos="visibleRepos" :repositories="repositories" @load-more="loadMore" :loadingMore="loadingMore"/>
 		</div>
 	</div>
 </template>
@@ -65,6 +65,7 @@
 	};
 	let repositories = ref([]);
 	let loading = ref(false);
+	let loadingMore = ref(false);
 	const visibleRepos = ref(15);
 
 	(async () => {
@@ -72,7 +73,6 @@
 			loading.value = true;
 			const data = await fetchData(apiConfig, configRepo);
 			if (data.length > 0) {
-				console.log(data.length)
 				repositories.value = data;
 			}
 		} catch (error) {
@@ -92,6 +92,10 @@
 	const skills = dataSkill?.data
 
 	function loadMore() {
-		visibleRepos.value += 15;
+		loadingMore.value = true;
+		setTimeout(() => {
+			visibleRepos.value += 15;
+			loadingMore.value = false;
+		}, 1000)
 	}
 </script>
