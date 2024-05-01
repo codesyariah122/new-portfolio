@@ -30,7 +30,10 @@
 	let close = ref(false);
 
 	const closeBanner = () => {
-		close.value = true;
+		setTimeout(() => {
+			confirm("Ok atuh ai gitu mah sipp!!!")
+			close.value = true;
+		}, 1000)
 	}
 
 	function goTo() {
