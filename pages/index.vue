@@ -6,6 +6,8 @@
 		<div v-else>
 			<home-person :persons="persons" :skills="skills"/>
 			<home-repositories :visibleRepos="visibleRepos" :repositories="repositories" @load-more="loadMore" :loadingMore="loadingMore"/>
+
+			<home-banner />
 		</div>
 	</div>
 </template>
