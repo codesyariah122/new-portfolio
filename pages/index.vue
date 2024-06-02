@@ -20,7 +20,7 @@
 			</div>
 			<home-repositories v-else :visibleRepos="visibleRepos" :repositories="repositories" @load-more="loadMore" :loadingMore="loadingMore"/> -->
 
-			<home-banner />
+			<!-- <home-banner /> -->
 		</div>
 	</div>
 </template>
@@ -30,7 +30,7 @@
 	import {fetchData} from '~/hooks';
 
 	definePageMeta({
-		layout: 'default'
+		layout: 'home'
 	})
 
 	defineOgImageComponent('Nuxt', {

@@ -1,9 +1,9 @@
 <template>
-	<div class="p-2 px-4">
+	<div class="p-4 px-4">
 		<div v-for="(person, idx) in persons" :key="idx">
 			<div v-if="person.name === 'Puji Ermanto'">
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-					<div class="col-span-1 w-full max-w-sm bg-stone-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-2 mb-6 md:h-[85vh] h-auto">
+					<div class="col-span-1 w-full max-w-md bg-stone-200 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-2 mb-6 md:h-[75vh] h-auto">
 						<div class="flex flex-col items-center pb-10">
 							<img class="w-48 h-48 mb-3 rounded-full shadow-lg" :src="$urlFor(person.image).url()" :alt="person.image.caption"/>
 							<span class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-400 border border-gray-500">
@@ -78,6 +78,7 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="grid grid-cols-1 w-full min-w-xl bg-stone-200 rounded-lg shadow dark:bg-gray-800 p-6 mt-6 h-auto">
 							<!-- <div class="flex justify-start space-x-6 rounded-lg">
 								<div class="shrink-0 w-full">
@@ -99,20 +100,20 @@
 
 								</div>
 							</div> -->
-							<div class="grid grid-cols-1 mb-36">
+							<div class="grid grid-cols-1">
 								<div class="col-span-full">
-									<div class="w-full min-w-xl border border-gray-600 rounded-lg shadow-2xl p-4 h-auto">
+									<div class="w-full min-w-xl border border-gray-100 rounded-lg p-4">
 										<div class="grid grid-cols-1 place-content-center place-items-center mb-8">
 											<div>
-												<h2 class="mb-2 text-4xl font-bold tracking-tight text-white dark:text-white">
+												<h2 class="mb-2 text-4xl font-bold tracking-tight text-gray-700 dark:text-white">
 													My Stargazers <font-awesome-icon icon="px-2 fa-brands fa-github-alt" />
 												</h2>
 											</div>
 										</div>
 										<div class="grid grid-cols-1 md:grid md:grid-cols-3 gap-4 ">
 											<div v-for="repo in repositories.slice(0, visibleRepos)" :key="repo.id">
-												<div class="w-full max-w-sm bg-stone-200 border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-													<div class="px-5 pb-5">
+												<div class="w-full max-w-sm bg-stone-300 border border-gray-100 rounded-lg shadow-xl">
+													<div class="px-5 pb-5 p-4">
 														<a :href="repo.html_url" target="_blank">
 															<h5 class="text-xl font-semibold capitalize tracking-tight text-gray-900 dark:text-white">
 																{{repo?.name}}
@@ -201,6 +202,16 @@
 		visibleRepos: Number,
 		loadingMore: Boolean
 	});
+
+	const emit = defineEmits(['load-more']);
+
+	function redirectRepo(url) {
+		window.open(url)
+	}
+
+	function triggerLoadMore() {
+		emit('load-more');
+	}
 
 	function whatsappRedirect() {
 		const whatsappNumber = '6288222668778';
