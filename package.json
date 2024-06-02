@@ -2,9 +2,11 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
+  "main": "dist-electron/main.js",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxi build --prerender && electron-builder",
     "dev": "nuxt dev",
+    "electron:dev": "electron .",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -21,6 +23,7 @@
     "flowbite": "^2.3.0",
     "nuxt": "^3.11.2",
     "sanity-blocks-vue-component": "^1.0.1",
+    "sharp": "^0.33.4",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "vue3-carousel-nuxt": "^1.1.1"
@@ -32,6 +35,11 @@
     "@nuxtjs/sanity": "^1.11.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@vite-pwa/nuxt": "^0.6.0",
-    "nuxt-og-image": "^3.0.0-rc.52"
+    "electron": "^30.0.2",
+    "electron-builder": "^24.13.3",
+    "nuxt-electron": "^0.7.0",
+    "nuxt-og-image": "^3.0.0-rc.52",
+    "vite-plugin-electron": "^0.28.7",
+    "vite-plugin-electron-renderer": "^0.14.5"
   }
 }

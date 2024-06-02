@@ -4,8 +4,8 @@
 			<molecules-loading :loading="loading" />
 		</div>
 		<div v-else>
-			<home-person :persons="persons" :skills="skills"/>
-			<div v-if="loading" class="grid grid-cols-1 py-12">
+			<home-person :persons="persons" :skills="skills" :visibleRepos="visibleRepos" :repositories="repositories" @load-more="loadMore" :loadingMore="loadingMore"/>
+			<!-- <div v-if="loading" class="grid grid-cols-1 py-12">
 				<div class="col-span-full place-self-center">
 					<div class="text-center text-xl">
 						<div role="status">
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 			</div>
-			<home-repositories v-else :visibleRepos="visibleRepos" :repositories="repositories" @load-more="loadMore" :loadingMore="loadingMore"/>
+			<home-repositories v-else :visibleRepos="visibleRepos" :repositories="repositories" @load-more="loadMore" :loadingMore="loadingMore"/> -->
 
 			<home-banner />
 		</div>
