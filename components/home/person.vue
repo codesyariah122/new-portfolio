@@ -319,6 +319,12 @@
                                 class="h-6"
                               />
 
+                              <img
+                                v-if="repo.language === 'Blade'"
+                                src="/img/logos/Laravel.svg.png"
+                                class="h-6"
+                              />
+
                               <a
                                 @click="redirectRepo(repo.html_url)"
                                 class="text-gray-700 bg-transparent border-2 border-gray-600 hover:bg-blue-800 hover:text-white hover:border-0 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer"

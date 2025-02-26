@@ -16,7 +16,7 @@ export const fetchData = async (apiConfig, configRepo) => {
 
 		const data = await response.json();
 
-		const starredRepos = data.filter(repo => repo.stargazers_count > 0);
+		const starredRepos = data.filter(repo => repo.stargazers_count > 0 && repo?.html_url !== 'https://github.com/codesyariah122/kang-hikmah-alfajri');
 
 		return starredRepos;
 	} catch (error) {
