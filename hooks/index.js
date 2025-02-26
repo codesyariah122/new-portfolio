@@ -6,7 +6,7 @@ export const fetchData = async (apiConfig, configRepo) => {
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${apiConfig.github_token}`
+				Authorization: `token ${apiConfig.github_token}`
 			}
 		});
 
