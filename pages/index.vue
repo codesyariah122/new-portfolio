@@ -9,9 +9,11 @@
         :skills="skills"
         :visibleRepos="visibleRepos"
         :repositories="repositories"
+        :contributions="contributions"
         @load-more="loadMore"
         :loadingMore="loadingMore"
       />
+
       <!-- <div v-if="loading" class="grid grid-cols-1 py-12">
 				<div class="col-span-full place-self-center">
 					<div class="text-center text-xl">
@@ -89,15 +91,50 @@ useSeoMeta({
   twitterCard: "summary_large_image",
 });
 
+let contributions = ref([]);
 const config = useRuntimeConfig();
 const apiConfig = {
   github_url: config.public.NUXT_APP_GITHUB_API_URL,
   github_user: config.public.NUXT_APP_GITHUB_USER,
   github_token: config.public.NUXT_APP_ACCESS_TOKEN,
+  github_graphql: config.public.NUXT_APP_GITHUB_GRAPHQL_URL,
   //   github_token: config.private.NUXT_APP_ACCESS_TOKEN,
 };
 
-// console.log(apiConfig.github_token);
+const fetchContributions = async () => {
+  const url = `https://api.github.com/users/${apiConfig.github_user}/events/public`;
+
+  try {
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${apiConfig.github_token}`,
+        "Content-Type": "application/json",
+        Accept: "application/vnd.github.v3+json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Filter hanya event push (commit)
+    const contributions = data
+      .filter((event) => event.type === "PushEvent")
+      .map((event) => ({
+        repo: event.repo.name,
+        commits: event.payload.commits.length,
+        date: event.created_at,
+      }));
+
+    console.log("Filtered Contributions:", contributions);
+    return contributions;
+  } catch (error) {
+    console.error("Error fetching contributions:", error);
+    return [];
+  }
+};
 
 const configRepo = {
   page: 1,
@@ -116,6 +153,10 @@ const visibleRepos = ref(15);
     if (data.length > 0) {
       repositories.value = data;
     }
+
+    contributions.value = await fetchContributions();
+
+    console.log(contributions.value);
   } catch (error) {
     console.error("Terjadi kesalahan saat memanggil API:", error.message);
   } finally {

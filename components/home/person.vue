@@ -64,6 +64,8 @@
                 <span class="md:block hidden">Github</span></a
               >
             </div>
+
+            <home-github-timeline :contributions="contributions" class="mt-6" />
           </div>
 
           <div class="col-span-2 md:col-start-2">
@@ -403,6 +405,7 @@ const props = defineProps({
   repositories: Array,
   visibleRepos: Number,
   loadingMore: Boolean,
+  contributions: Array,
 });
 
 const emit = defineEmits(["load-more"]);

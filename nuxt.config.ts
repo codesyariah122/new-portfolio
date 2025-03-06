@@ -8,7 +8,8 @@ export default defineNuxtConfig({
       NUXT_APP_GITHUB_API_URL: process.env.NUXT_APP_GITHUB_API_URL,
       NUXT_APP_GITHUB_USER: process.env.NUXT_APP_GITHUB_USER,
       NUXT_APP_ACCESS_TOKEN: process.env.NUXT_APP_ACCESS_TOKEN,
-      NUXT_APP_GALLERY_URL: process.env.NUXT_APP_GALLERY_URL
+      NUXT_APP_GALLERY_URL: process.env.NUXT_APP_GALLERY_URL,
+      NUXT_APP_GITHUB_GRAPHQL_URL: process.env.NUXT_APP_GITHUB_GRAPHQL_URL,
     },
     private: {
       NUXT_APP_ACCESS_TOKEN: process.env.NUXT_APP_ACCESS_TOKEN
@@ -42,7 +43,7 @@ export default defineNuxtConfig({
         Poppins: true,
         Montserrat: true,
         Roboto: true,
-        Inter: [400, 700],
+        // Inter: [400, 700],
         'Josefin+Sans': true,
         Lato: [100, 300],
         Raleway: {
