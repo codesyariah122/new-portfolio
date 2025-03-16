@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     }
   },
   ssr: true,
-  target: 'static',
+  target: 'server',
   runtimeConfig: {
     public: {
       NUXT_APP_GITHUB_API_URL: process.env.NUXT_APP_GITHUB_API_URL,
