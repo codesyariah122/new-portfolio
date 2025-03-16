@@ -31,8 +31,7 @@
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/sanity": "^1.11.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
-    "@vite-pwa/nuxt": "^0.6.0",
-    "nuxt-og-image": "^3.0.0-rc.52"
+    "@vite-pwa/nuxt": "^0.6.0"
   },
   "packageManager": "yarn@4.7.0"
 }
