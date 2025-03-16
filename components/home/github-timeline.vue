@@ -3,7 +3,7 @@
     <h2 class="text-2xl font-bold mb-4 text-gray-800">GitHub Contributions</h2>
     <ol class="relative border-l border-gray-200 dark:border-gray-700">
       <li
-        v-for="(contribution, index) in contributions"
+        v-for="(contribution, index) in paginatedContributions"
         :key="index"
         class="mb-10 ml-6"
       >
@@ -29,12 +29,33 @@
           <p class="text-sm text-gray-600">
             Commits: {{ contribution.commits }}
           </p>
-          <time class="block text-sm text-gray-500">
-            {{ formatDate(contribution.date) }}
-          </time>
+          <time class="block text-sm text-gray-500">{{
+            formatDate(contribution.date)
+          }}</time>
         </div>
       </li>
     </ol>
+
+    <!-- Pagination Controls -->
+    <div class="flex justify-center items-center mt-4 space-x-2">
+      <button
+        @click="prevPage"
+        :disabled="currentPage === 1"
+        class="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+      >
+        Prev
+      </button>
+      <span class="text-gray-700"
+        >Page {{ currentPage }} of {{ totalPages }}</span
+      >
+      <button
+        @click="nextPage"
+        :disabled="currentPage >= totalPages"
+        class="px-4 py-2 bg-gray-300 text-gray-700 rounded disabled:opacity-50"
+      >
+        Next
+      </button>
+    </div>
   </div>
 </template>
 
@@ -46,10 +67,36 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      currentPage: 1,
+      itemsPerPage: 5, // Jumlah item per halaman
+    };
+  },
+  computed: {
+    totalPages() {
+      return Math.ceil(this.contributions.length / this.itemsPerPage);
+    },
+    paginatedContributions() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.contributions.slice(start, end);
+    },
+  },
   methods: {
     formatDate(dateString) {
       const options = { year: "numeric", month: "long", day: "numeric" };
       return new Date(dateString).toLocaleDateString("id-ID", options);
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
     },
   },
 };
