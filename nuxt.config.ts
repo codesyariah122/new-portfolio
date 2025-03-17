@@ -1,13 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   nitro: {
     externals: {
       inline: ['unenv']
     }
   },
+
   ssr: true,
   target: 'server',
+
   runtimeConfig: {
     public: {
       NUXT_APP_GITHUB_API_URL: process.env.NUXT_APP_GITHUB_API_URL,
@@ -20,6 +23,7 @@ export default defineNuxtConfig({
       NUXT_APP_ACCESS_TOKEN: process.env.NUXT_APP_ACCESS_TOKEN
     }
   },
+
   alias: {
     // "@": resolve(__dirname, "/")
     assets: "/<rootDir>/assets"
@@ -31,10 +35,12 @@ export default defineNuxtConfig({
   head: {
     title: "PujiErmanto::Portfolio",
   },
+
   css: [
     "@/assets/css/main.css",
     '@fortawesome/fontawesome-svg-core/styles.css'
   ],
+
   modules: [
     'nuxt-og-image',
     '@nuxtjs/sanity',
@@ -68,10 +74,12 @@ export default defineNuxtConfig({
   carousel: {
     prefix: 'C'
   },
+
   sanity: {
     projectId: process.env.NUXT_APP_PROJECTID,
     apiVersion: '2022-05-08'
   },
+
   device: {
     refreshOnResize: true
   },
@@ -148,11 +156,15 @@ export default defineNuxtConfig({
       ],
     },
   },
+
   buildModules: [
     '@nuxtjs/dotenv'
   ],
+
   plugins: [
     '~/plugins/fontawesome',
     '~/plugins/sanity-image-url',
-  ]
+  ],
+
+  compatibilityDate: "2025-03-17"
 })

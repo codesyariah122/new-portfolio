@@ -5,9 +5,9 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
@@ -20,6 +20,7 @@
     "@unocss/preset-wind": "^0.59.3",
     "flowbite": "^2.3.0",
     "nuxt": "^3.11.2",
+    "nuxt-og-image": "^5.0.4",
     "sanity-blocks-vue-component": "^1.0.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
@@ -33,5 +34,5 @@
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@vite-pwa/nuxt": "^0.6.0"
   },
-  "packageManager": "yarn@4.7.0"
+  "packageManager": "yarn@3.2.1"
 }
